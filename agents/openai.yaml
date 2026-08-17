@@ -1,0 +1,8 @@
+interface:
+  display_name: "Verified Project Delivery"
+  short_description: "用可验证证据管理长期项目、多 Agent 协作与里程碑交接"
+  default_prompt: "Use $verified-project-delivery to manage this project with truthful status, dependency-aware parallel work, merge validation, and concise handoffs."
+
+policy:
+  allow_implicit_invocation: true
+
