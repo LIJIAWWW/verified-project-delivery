@@ -28,20 +28,24 @@ Prioritize the critical path. A completed supporting task does not advance a blo
 
 ## Report status truthfully
 
-Use only these states:
+Track delivery state separately from execution activity. Use only these delivery states:
 
 - `pending`: not started.
-- `running`: an agent or process is currently active and has recent evidence.
 - `blocked`: cannot proceed without a dependency, decision, permission, or resource.
 - `implemented`: changes exist but have not passed the required verification.
 - `verified`: the task's own acceptance checks passed.
 - `integrated`: merged with dependent work and integration checks passed.
 - `completed`: the user-visible acceptance condition is satisfied.
-- `stopped`: no work is currently running.
 
-Never claim `running` merely because work was planned or previously delegated. A running report must include the task or agent, recent effective output time, changed artifact or processing count, current blocker if any, and next checkpoint.
+Report execution activity as a separate field:
 
-If no active evidence exists, state that no background task is running.
+- `active`: an agent or process is currently executing and has recent evidence.
+- `inactive`: no agent or process is currently executing.
+- `waiting`: execution is paused for a named dependency, decision, permission, resource, or scheduled checkpoint.
+
+Never claim `active` merely because work was planned or previously delegated. An active report must include the task or agent, recent effective output time, changed artifact or processing count, current blocker if any, and next checkpoint.
+
+If no active evidence exists, report `inactive` or `waiting` and state that no background task is running. Preserve the delivery state: a task can be both `completed` and `inactive`, or `blocked` and `waiting`.
 
 Do not estimate progress from intuition. Derive it from passed acceptance criteria and distinguish implementation, data completeness, integration, testing, and deployment when relevant.
 

@@ -2,6 +2,8 @@
 
 Last updated: YYYY-MM-DD HH:MM TZ
 Current milestone: <!-- milestone name -->
+Execution activity: inactive <!-- active | inactive | waiting -->
+Activity evidence: <!-- active agent/process + recent output, or why nothing is running -->
 
 ## Acceptance progress
 
@@ -9,9 +11,9 @@ Current milestone: <!-- milestone name -->
 
 ## Tasks
 
-| Task | Owner | Status | Depends on | Allowed scope | Acceptance criteria | Verification evidence | Last effective output |
-|---|---|---|---|---|---|---|---|
-| <!-- task --> | <!-- agent/person --> | pending | <!-- dependencies --> | <!-- files/directories --> | <!-- observable outcome --> | <!-- command/result/artifact --> | <!-- timestamp --> |
+| Task | Owner | Delivery state | Activity | Depends on | Allowed scope | Acceptance criteria | Verification evidence | Last effective output |
+|---|---|---|---|---|---|---|---|---|
+| <!-- task --> | <!-- agent/person --> | pending | inactive | <!-- dependencies --> | <!-- files/directories --> | <!-- observable outcome --> | <!-- command/result/artifact --> | <!-- timestamp --> |
 
 ## Current blockers
 

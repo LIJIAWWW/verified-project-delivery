@@ -88,16 +88,22 @@ git clone https://github.com/LIJIAWWW/verified-project-delivery.git "$env:USERPR
 
 ### 状态定义
 
-Skill 使用明确状态区分“已写代码”和“真正完成”：
+Skill 将“交付状态”和“执行活动”分开记录，避免任务已经完成却又被 `stopped` 覆盖：
 
 - `pending`：尚未开始；
-- `running`：确有活跃执行和近期产出证据；
 - `blocked`：被依赖、决策、权限或资源阻塞；
 - `implemented`：代码或内容已落地，但尚未验证；
 - `verified`：当前任务的验收检查已通过；
 - `integrated`：合并后验证已通过；
-- `completed`：用户可见的验收目标已经满足；
-- `stopped`：当前没有任务运行。
+- `completed`：用户可见的验收目标已经满足。
+
+执行活动使用独立字段：
+
+- `active`：确有活跃 Agent 或进程，并有近期产出证据；
+- `inactive`：当前没有 Agent 或进程执行；
+- `waiting`：正在等待明确的依赖、决策、权限、资源或计划检查点。
+
+例如，一个任务可以同时是 `completed` + `inactive`，也可以是 `blocked` + `waiting`。
 
 ---
 
@@ -179,14 +185,22 @@ and produce a concise handoff for the next task.
 
 ### Status model
 
+Track delivery state separately from execution activity so that stopping execution never erases what was delivered.
+
 - `pending`: not started;
-- `running`: active execution with recent evidence;
 - `blocked`: waiting on a dependency, decision, permission, or resource;
 - `implemented`: changes exist but have not passed verification;
 - `verified`: task-level acceptance checks passed;
 - `integrated`: merged and integration checks passed;
-- `completed`: the user-visible acceptance condition is satisfied;
-- `stopped`: no work is currently running.
+- `completed`: the user-visible acceptance condition is satisfied.
+
+Execution activity uses a separate field:
+
+- `active`: an agent or process is executing with recent evidence;
+- `inactive`: no agent or process is currently executing;
+- `waiting`: execution is paused for a named dependency, decision, permission, resource, or scheduled checkpoint.
+
+For example, a task can be `completed` + `inactive`, or `blocked` + `waiting`.
 
 ## Repository structure
 

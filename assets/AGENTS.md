@@ -6,6 +6,6 @@
 - Avoid overlapping file ownership unless coordination is explicit.
 - Treat delegated completion as unverified until direct checks pass.
 - Run affected build, tests, or data checks before integration and again after integration when needed.
-- Claim `running` only with an active agent or process and recent output evidence. Otherwise report `blocked`, `stopped`, or the applicable completed state.
+- Track delivery state separately from execution activity. Report `active` only with an active agent or process and recent output evidence; otherwise report `inactive` or `waiting` without discarding the delivery state.
 - Update the milestone handoff before transferring work to a new task.
 
